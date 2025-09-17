@@ -147,4 +147,26 @@ We surveyed **40 fixed-area plots** in *Pinus radiata* plantations (Western Aust
 ---
 
 ## 8. Limitations & Future Work
-...
+
+- Ground fit errors can propagate; butt swell/occlusion can bias basal slabs.  
+- Dense stands may still trigger seeding failures; SLAM drift can induce axis waviness.  
+- Generalization beyond species/sensors in the current dataset is pending.  
+
+**Future work**: joint ground–stem optimization, species-aware taper priors, multi-session fusion with uncertainty, semantic branch suppression, adaptive scanning trajectories, broader cross-site validation.
+
+---
+
+## 9. Main Contributors
+
+This work was conducted by a cross-disciplinary team at **The University of Western Australia (UWA)** with collaborators.
+
+- **Haitian Wang*** – Co-first author; pipeline design & implementation, experiments, analysis, writing.  
+- **Yiren Wang*** – Co-first author; modeling & geometry processing, evaluation.  
+- **Yihao Ding†** – Senior supervision, problem framing, manuscript.  
+
+\*Equal contribution.  †Corresponding author.
+
+---
+
+> Contact: haitian.wang@uwa.edu.au  
+> Project by: Department of Computer Science and Software Engineering, University of Western Australia, Australia.
