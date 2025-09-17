@@ -27,8 +27,6 @@ Reliable **stem measurements**—DBH, total height, stem length, taper curve, an
 
 This repository implements a **handheld SLAM–LiDAR** pipeline that delivers **TLS-like DBH accuracy** with the mobility needed for plot-scale surveys. The system performs **convex terrain normalization (Huber + TV)**, **density-regularized stem seeding**, **constrained BEV algebraic circle fitting**, and **taper-aware piecewise cylindrical growth under a robust inlier–outlier likelihood** to reconstruct per-tree geometry end-to-end.
 
-![Overview Diagram](./docs/Figures/Overview_Pipeline.png)
-
 ---
 
 ## 2. Motivation and Background
@@ -61,6 +59,10 @@ Core building blocks:
 We surveyed **40 fixed-area plots** in *Pinus radiata* plantations (Western Australia), spanning four age classes. A **Hovermap-class VLP-16** handheld unit was walked in concentric paths with loop closure; differential GNSS located plot centers. Near stems, point density exceeded \(5 \times 10^4\) pts/m\(^2\). Ground-truth includes **DBH & height** for all trees; **3 plots** underwent **destructive sampling** for section diameters/lengths, enabling full taper/flexure validation.
 
 ![Device & Field Setup](./docs/Figures/LiDAR_data.png)  
+
+To validate geometric accuracy, we followed a strict measurement protocol: standing trees were measured with a hypsometer, while felled samples were cut into sections for diameter and length recording.  
+
+![Data Collection Protocol](./docs/Figures/Data_Collection.png)  
 
 ### Representative Plot Statistics
 
