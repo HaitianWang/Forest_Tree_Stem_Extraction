@@ -79,21 +79,24 @@ The three plots capture distinct forest conditions. Plot 25 represents an older 
 ### Signal Preprocessing
 ![Preprocessing](./docs/Figures/Data_Preprocessing.png)
 
-- **Voxel aggregation** (2 cm)  
-- **Ground surface fit**: convex Huber + TV regularization  
-- **Height normalization**: \(\tilde z = z - g(x,y)\)
+Raw point clouds are downsampled by **2 cm voxel aggregation**. Ground elevation is estimated on a **0.25 m grid** using a convex fit with **Huber fidelity (δ = 0.15 m)** and **second–order TV regularization (β = 0.8)**. Heights are normalized as \(\tilde z = z - g(x,y)\), making vertical measurements terrain-invariant but reversible to world space.  
+
 
 ### Stem Extraction
 ![Stem Extraction Workflow](./docs/Figures/Stem_Extraction_pipeline.png)
 
-- Density-regularized clustering in thin height band  
-- BEV constrained algebraic circle fitting  
-- Piecewise cylindrical fitting (MLESAC + taper penalty)
+Tree seeds are detected in a **0.8–2.0 m band** via **density-regularized clustering**. Around each seed, a **Taubin-style algebraic circle** is fitted in bird’s-eye view to initialize stem cross-sections. Stems are then reconstructed slab by slab (**0.5 m height, 50% overlap**) using **MLESAC inlier–outlier likelihood** (π = 0.6, σ = 0.02 m, Dmax = 0.25 m). A **one-sided taper penalty (ε = 0.005 m)** rejects non-physical radius increases, ensuring stable taper curves.  
 
 ### Feature Computation
-- **DBH**: at 1.3 m  
-- **Height**: max normalized elevation  
-- **Taper, Lean, Curvature**: derived from reconstructed axis
+From the reconstructed axes and radii, the pipeline derives:  
+- **DBH** at 1.3 m  
+- **Tree height** as maximum normalized elevation  
+- **Stem length** as axis arc length  
+- **Taper curves** (piecewise radii, with optional spline smoothing)  
+- **Axis lean** from least-squares fitting  
+- **Curvature** from tangent deviations  
+
+These features provide both standard inventory variables and detailed stem geometry descriptors.  
 
 ---
 
