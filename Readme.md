@@ -70,6 +70,8 @@ We surveyed **40 fixed-area plots** in *Pinus radiata* plantations (Western Aust
 | 31      | 24    | 18       | 160–310        | 243.8         | 10.5–26.9        | 23.1            | 49.9       | 74,860           | 8               |
 | 42      | 50    | 8        | 65–205         | 137.6         | 9.8–16.2         | 14.0            | 40.2       | 58,120           | 10              |
 
+The three plots capture distinct forest conditions. Plot 25 represents an older stand with fewer but much larger trees (mean DBH ≈ 42 cm, mean height ≈ 36.5 m). Plot 31 shows a mid-aged stand with medium-sized stems (mean DBH ≈ 24 cm, height ≈ 23 m). Plot 42 is the youngest and densest, with many small trees (mean DBH ≈ 14 cm, height ≈ 14 m). This gradient demonstrates that the dataset covers a wide range of ages, densities, and structural complexity, ensuring robust evaluation across different plantation stages.
+
 ---
 
 ## 5. Methodology
@@ -115,6 +117,8 @@ We surveyed **40 fixed-area plots** in *Pinus radiata* plantations (Western Aust
 | **Avg (MAE)**    | **-- (1.0)**            | **-- (0.7)**               | **-- (0.5)**                   | --                      |
 | **Avg (RMSE/rRMSE)** | **1.15 / 4.20%**    | **0.50 / 3.90%**           | --                             | --                      |
 
+Across all stand complexity levels, the pipeline maintains centimeter-level DBH accuracy with an overall mean absolute error (MAE) of 1.0 cm and sub-meter height accuracy with MAE of 0.7 m. Stem length errors average 0.5 m, confirming stable estimation even in dense stands. The overall RMSE values are 1.15 cm (4.20% rRMSE) for DBH and 0.50 m (3.90% rRMSE) for height, comparable to TLS benchmarks. While flexure angles increase in high-density plots, they remain within biologically plausible ranges. These averages demonstrate that the pipeline achieves consistent, inventory-grade accuracy across varying forest conditions.
+
 ![Flexure Visualization](./docs/Figures/Tree_Stem_Flexure.png)
 
 ---
@@ -133,6 +137,8 @@ We surveyed **40 fixed-area plots** in *Pinus radiata* plantations (Western Aust
 | Gollob et al. (2021)| sLiDAR   | Mixed urban                 | 1.50 / 8.6%      |
 | **Ours (2026)**     | HMLS     | *Pinus radiata*             | **1.15 / 4.20%** |
 
+The comparison shows that our handheld MLS (HMLS) system achieves 1.15 cm RMSE and 4.20% rRMSE for DBH, essentially matching the precision of TLS studies (≈1.2 cm RMSE) while being far more mobile and practical in dense stands. In contrast, aerial and UAV-based approaches typically report larger errors (≥1.7 cm, often >10% rRMSE), reflecting their weaker sensitivity to basal cross-sections. Smartphone LiDAR achieves competitive results in urban settings (≈1.5 cm), but lacks scalability in forests. Overall, the average performance of our method places it at the TLS benchmark level, while maintaining operational efficiency for large-scale forest inventory.
+
 #### Height Accuracy
 
 | Study              | Platform | Species/Stand               | Height RMSE / rRMSE |
@@ -143,6 +149,8 @@ We surveyed **40 fixed-area plots** in *Pinus radiata* plantations (Western Aust
 | Ganz et al. (2019)  | ULS      | Douglas-fir stand           | 0.76 / --           |
 | Ganz et al. (2019)  | ALS      | Mixed conifer               | 1.20 / --           |
 | **Ours (2026)**     | HMLS     | *Pinus radiata*             | **0.50 / 3.90%**    |
+
+Compared with existing TLS, ALS, and UAV-LS studies, our handheld MLS (HMLS) system attains TLS-like DBH accuracy (1.15 cm RMSE) while operating with much greater mobility. For height, our method achieves 0.50 m RMSE (3.9% rRMSE), outperforming most aerial platforms and approaching TLS precision. These results highlight that the proposed pipeline balances high accuracy with operational efficiency, making it well suited for rapid plot-scale forest surveys.
 
 ---
 
