@@ -1,0 +1,17 @@
+
+
+
+ptclassified = ptVeg ;
+treelabels = veglabel3D ;
+treeloc = ptclassified.Location;
+labels = unique(treelabels);
+lastlabel = max(labels);
+for x=1:82
+    newindex = find(treelabels(:)==x);
+    [a,b] = size(newindex);
+    if a<400
+        continue
+    end
+    newtree = treeloc(newindex,:);
+
+end

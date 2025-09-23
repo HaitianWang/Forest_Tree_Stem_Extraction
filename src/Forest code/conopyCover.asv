@@ -1,0 +1,15 @@
+% Set grid size to 0.5 meters per pixel 
+gridRes = 0.1;
+% Generate CHM
+canopyModel = pc2dem(pointCloud(normalizedPoints),gridRes,CornerFillMethod="max");
+% Clip invalid and negative CHM values to zero
+canopyModel(isnan(canopyModel) | canopyModel<0) = 0;
+% Perform gaussian smoothing to remove noise effects
+H = fspecial("gaussian",[5 5],1);
+canopyModel = imfilter(canopyModel,H,'replicate','same');
+% Visualize CHM
+figure
+imagesc(canopyModel)
+title('Canopy Height Model')
+axis off
+colormap(gray)
